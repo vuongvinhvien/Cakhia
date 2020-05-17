@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cà khịa v1.0</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app" class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Cà khịa</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">...zZ"vVv"Zz...<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ờ bao mi
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">V3...3Vvvv</a>
+                            <a class="dropdown-item" href="#">V3</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://www.facebook.com/vuongvinhvien">vuongvinhvien</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> -->
+            </div>
+        </nav>
+        <hr>
+        <form>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Input</label>
+                        <textarea v-model="input" class="form-control" id="" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-1 text-center">
+                        <label for="exampleFormControlTextarea1">Cà</label>
+                        <textarea v-model="keyVal" class="form-control" id="" rows="5"></textarea>
+                    </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Output row</label>
+                        <textarea v-model="right" class="form-control" id="" rows="5"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button type="button" v-on:click="convert" class="btn btn-outline-secondary" id="button-addon1">Khịa liền tay</button>
+                        </div>
+                        <input v-model="lenght" class="form-control text-right" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label for="exampleFormControlTextarea1">Output sum</label>
+                    <textarea v-model="output" class="form-control" id="" rows="20"></textarea>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    input: '',
+                    right: '',
+                    output: '',
+                    lenght: 0,
+                    keyVal: '',
+                }
+            },
+            methods: {
+                convert() {
+                    var re1 = /[a-zA-Z_0-9 \t\n\x0b\r\f：。"`~;:?></$？=，；、！*',.…\[\]【】+（）%()!@#^&-”]/g;
+                    var str = this.input;
+                    var newstr1 = str.replace(re1, "");
+                    this.output = newstr1;
+                    this.lenght = newstr1.length;
+                    var re2 = /[a-zA-Z_0-9 \t\x0b\r\f：。"`~;:?></$？=，；、！*',.…\[\]【】+（）%()!@#^&-”]/g;
+                    var newstr2 = str.replace(re2, "");
+                    this.right = newstr2;
+                    var index2 = 0;
+                    for (let index = 0; index < newstr2.length; index++) {
+                        index2++;
+                        if (newstr2[index] == "\n") {
+
+                            this.keyVal = this.keyVal + String(index2 - 1) + "\n";
+                            console.log("a" + this.keyVal);
+                            console.log("b" + index);
+                            index2 = 0;
+                        }
+                        else if (index == newstr2.length - 1) {
+                            this.keyVal = this.keyVal + String(index2) + "\n";
+                        }
+
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
